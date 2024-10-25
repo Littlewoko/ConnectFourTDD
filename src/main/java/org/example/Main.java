@@ -5,11 +5,28 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         try {
-            int width = 3;
-            int height = 3;
-            int winCondition = 3;
+            Board board = new Board(1, 1);
 
-            Board board = new Board(width, height);
+            boolean noValidBoard = true;
+            while(noValidBoard) {
+                try {
+                    print("Please enter the width of the game board");
+                    int width = Integer.parseInt(getUserInput());
+
+                    print("Please enter the height of the game board");
+                    int height = Integer.parseInt(getUserInput());
+
+                    board = new Board(width, height);
+
+                    noValidBoard = false;
+                } catch(Exception e) {
+                    print(e.getMessage());
+                    print("Game board is invalid, please enter new values");
+                }
+            }
+
+            int winCondition = 4;
+
 
             int turnCounter = 0;
             int player = getNextPlayer(turnCounter);
@@ -65,5 +82,10 @@ public class Main {
         }
 
         return columnChosen;
+    }
+
+    public static String getUserInput() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 }

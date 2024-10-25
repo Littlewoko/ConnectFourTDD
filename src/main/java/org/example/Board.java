@@ -6,6 +6,8 @@ public class Board {
     private int[][] board;
 
     public Board(int width, int height) {
+        if(width < 1) throw new IllegalArgumentException("width must be greater than 0");
+        if(height < 1) throw new IllegalArgumentException("height must be greater than 0");
         board = new int[width][height];
     }
 

@@ -238,4 +238,15 @@ public class BoardTest {
 
         Assertions.assertFalse(boardClass.boardHasWinCondition(boardClass.getBoard(), 3));
     }
+
+    @Test
+    void boardConstructor_throwsIllegalArgumentException_whenWidthLessThan1() throws Exception {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Board(0, HEIGHT));
+    }
+
+    @Test
+    void boardConstructor_throwsIllegalArgumentException_whenHeightLessThan1() throws Exception {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Board(WIDTH, 0));
+    }
+
 }
